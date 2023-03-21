@@ -1,0 +1,216 @@
+Menu("What Kind?","Strong-Strong",1,"Weak-Strong",2
+Lbl 1
+Input "Starting Volume ml ",V
+Menu("Starting Solution?","Acid",3,"Base",4
+Lbl 3
+Input "Inital H+ M",K
+-log(K)→P
+Disp "Inital pH"
+Disp P
+Disp "Inital pOH"
+Disp 14-P
+K*V→H
+Input "OH- M ",B
+Lbl 6
+Input "How much more OH- added ml ",L
+V+L→V
+B*L→O
+H-O→H
+H/V→K
+If K>0
+Then
+-log(K)→P
+Else
+If K=0
+Then
+7→P
+Else
+-log(abs(H)/V)→P
+14-P→P
+End
+End
+ClrHome
+Disp "mmol of H+"
+Disp H
+Disp "Current Volume ml"
+Disp V
+Disp "Current pH"
+Disp P
+Disp "Current pOH"
+Disp 14-P
+Pause 
+Disp "Press 1 to titrate more"
+Disp "Enter anything else to quit"
+Input "Continue? ",R
+If R=1:Goto 6
+Stop
+Lbl 4
+Input "Inital OH- M ",B
+-log(B)→P
+Disp "Inital pOH"
+Disp P
+Disp "Inital pH"
+Disp 14-P
+B*V→O
+Input "H+ M ",K
+Lbl 5
+Input "How much more H+ added ml ",L
+V+L→V
+K*L→H
+O-H→O
+O/V→B
+If B>0
+Then
+-log(B)→P
+Else
+If B=0
+Then
+7→P
+Else
+-log(abs(O)/V)→P
+14-P→P
+End
+End
+ClrHome
+Disp "mmol of OH-"
+Disp O
+Disp "Current Volume ml"
+Disp V
+Disp "Current pOH"
+Disp P
+Disp "Current pH"
+Disp 14-P
+Pause 
+Disp "Press 1 to titrate more"
+Disp "Enter anything else to quit"
+Input "Continue? ",R
+If R=1:Goto 5
+Stop
+Lbl 2
+Input "Starting Volume ml ",V
+Menu("Starting Solution?","Acid",7,"Base",8
+Lbl 7
+Input "Inital HA M ",B
+Input "Ka ",D
+B*V→O
+Input "BOH M ",K
+√(D*B→Q
+-log(Q)→P
+Disp "Inital pH"
+Disp P
+Disp "Inital pOH"
+Disp 14-P
+0→C
+Lbl 11
+Input "How much more OH- added ml ",L
+V+L→V
+K*L→H
+O-H→O
+C+H→C
+O/V→W
+C/V→M
+If W>0
+Then
+­log(D)+log(M/W)→P
+ClrHome
+Disp "Current Volume ml"
+Disp V
+Disp "Current pH"
+Disp P
+Disp "Current pOH"
+Disp 14-P
+Pause 
+Goto 11
+End
+1*10^-14/D→J
+√(J*M)→D
+-log(D)→P
+ClrHome
+Disp "Current Volume ml"
+Disp V
+Disp "Current pH"
+Disp 14-P
+Disp "Current pOH"
+Disp P
+Pause 
+Lbl 12
+Input "How much more OH- added ml ",L
+V+L→V
+K*L→O
+-log(O/V)→P
+ClrHome
+Disp "Current Volume ml"
+Disp V
+Disp "Current pOH"
+Disp P
+Disp "Current pH"
+Disp 14-P
+Pause 
+Disp "Press 1 to titrate more"
+Disp "Enter anything else to quit"
+Input "Continue? ",R
+If R=1:Goto 12
+Stop
+Lbl 8
+Input "Inital BOH M ",B
+Input "Kb ",D
+B*V→O
+Input "HA M ",K
+√(D*B→Q
+-log(Q)→P
+Disp "Inital pH"
+Disp 14-P
+Disp "Inital pOH"
+Disp P
+0→C
+Lbl 9
+Input "How much more H+ added ml ",L
+V+L→V
+K*L→H
+O-H→O
+C+H→C
+O/V→W
+C/V→M
+If W>0
+Then
+-log(D)+log(M/W)→P
+ClrHome
+Disp "Current Volume ml"
+Disp V
+Disp "Current pOH"
+Disp P
+Disp "Current pH"
+Disp 14-P
+Pause 
+Goto 9
+End
+1*10^-14/D→J
+√(J*M)→K
+14-(-log(K))→P
+ClrHome
+Disp "Current Volume ml"
+Disp V
+Disp "Current pOH"
+Disp P
+Disp "Current pH"
+Disp 14-P
+Pause 
+Lbl 10
+Input "How much more H+ added ml ",L
+V+L→V
+K*L→H
+C+H→C
+14-(-log(C/V))→P
+ClrHome
+Disp "Current Volume ml"
+Disp V
+Disp "Current pOH"
+Disp P
+Disp "Current pH"
+Disp 14-P
+Pause
+Disp "Press 1 to titrate more"
+Disp "Enter anything else to quit"
+Input "Continue? ",R
+If R=1:Goto 10
+Stop
